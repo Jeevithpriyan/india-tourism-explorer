@@ -3,39 +3,59 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Incredible India Explorer</title>
+    <title>Incredible India Explorer</title>
 
-<meta name="description"
-content="Explore India's tourist destinations with live weather, hotels, attractions, maps and AI travel planning.">
+    <meta name="description"
+        content="Explore India's tourist destinations with live weather, hotels, attractions, AI travel planner, maps and beautiful galleries.">
 
-<meta name="keywords"
-content="India Tourism, Weather, Hotels, Travel, AI Planner, Tourist Places">
+    <meta name="keywords"
+        content="India Tourism, Travel, Weather, Hotels, Tourist Places, AI Planner">
 
-<meta name="author"
-content="Jeevithpriyan V">
+    <meta name="author"
+        content="Jeevithpriyan V">
 
-<meta name="theme-color"
-content="#2563eb">
+    <meta name="theme-color"
+        content="#2563EB">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts -->
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animations.css">
-<link rel="stylesheet" href="css/darkmode.css">
-<link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+        href="style.css">
+
+    <link rel="stylesheet"
+        href="animations.css">
+
+    <link rel="stylesheet"
+        href="darkmode.css">
+
+    <link rel="stylesheet"
+        href="responsive.css">
 
 </head>
 
 <body>
+
+<!-- ================= NAVBAR ================= -->
 
 <header>
 
@@ -45,25 +65,25 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <i class="fa-solid fa-earth-asia"></i>
 
-<span>Incredible India</span>
+<h2>Incredible India</h2>
 
 </div>
 
-<ul class="nav-links">
+<ul class="menu">
 
 <li><a href="#">Home</a></li>
 
-<li><a href="#">Explore</a></li>
+<li><a href="#popular">Popular</a></li>
 
-<li><a href="#">States</a></li>
+<li><a href="#states">States</a></li>
 
-<li><a href="#">Hotels</a></li>
+<li><a href="#gallery">Gallery</a></li>
 
-<li><a href="#">About</a></li>
+<li><a href="about.html">About</a></li>
 
 </ul>
 
-<div class="nav-icons">
+<div class="nav-buttons">
 
 <button id="themeToggle">
 
@@ -77,31 +97,34 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 </header>
 
+<!-- ================= HERO ================= -->
+
 <section class="hero">
 
-<div class="hero-overlay"></div>
+<div class="overlay"></div>
 
 <div class="hero-content">
 
 <h1>
 
-Discover Incredible India
+Explore Incredible India
 
 </h1>
 
 <p>
 
-Live Weather • Hotels • Attractions • AI Trip Planner
+Live Weather • Hotels • Tourist Attractions • AI Travel Planner
 
 </p>
 
-<div class="search-box">
+<div class="search-container">
 
 <input
 type="text"
-placeholder="Search any tourist destination...">
+id="destinationInput"
+placeholder="Search any destination...">
 
-<button>
+<button id="searchBtn">
 
 <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -115,7 +138,33 @@ Search
 
 </section>
 
-<section class="popular">
+<!-- ================= WEATHER ================= -->
+
+<section class="weather-preview">
+
+<h2>
+
+Live Weather
+
+</h2>
+
+<div id="weatherCard">
+
+<p>
+
+Search a destination to view live weather.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= POPULAR DESTINATIONS ================= -->
+
+<section
+id="popular"
+class="popular">
 
 <h2>
 
@@ -123,35 +172,43 @@ Popular Destinations
 
 </h2>
 
-<div class="cards">
+<div class="card-grid">
 
-<div class="card">
+<div class="destination-card">
 
-<img src="assets/images/ooty.jpg">
+<img
+src="assets/images/ooty.jpg"
+alt="Ooty">
 
 <h3>Ooty</h3>
 
 </div>
 
-<div class="card">
+<div class="destination-card">
 
-<img src="assets/images/goa.jpg">
+<img
+src="assets/images/goa.jpg"
+alt="Goa">
 
 <h3>Goa</h3>
 
 </div>
 
-<div class="card">
+<div class="destination-card">
 
-<img src="assets/images/manali.jpg">
+<img
+src="assets/images/manali.jpg"
+alt="Manali">
 
 <h3>Manali</h3>
 
 </div>
 
-<div class="card">
+<div class="destination-card">
 
-<img src="assets/images/ladakh.jpg">
+<img
+src="assets/images/ladakh.jpg"
+alt="Ladakh">
 
 <h3>Ladakh</h3>
 
@@ -161,19 +218,131 @@ Popular Destinations
 
 </section>
 
-<footer>
+<!-- ================= EXPLORE STATES ================= -->
+
+<section
+id="states"
+class="states">
+
+<h2>
+
+Explore by State
+
+</h2>
 
 <p>
 
-Made by Jeevithpriyan
+Interactive India map coming soon.
 
 </p>
 
+</section>
+
+<!-- ================= GALLERY ================= -->
+
+<section
+id="gallery"
+class="gallery">
+
+<h2>
+
+Photo Gallery
+
+</h2>
+
+<div class="gallery-grid">
+
+<img src="assets/images/gallery1.jpg" alt="">
+
+<img src="assets/images/gallery2.jpg" alt="">
+
+<img src="assets/images/gallery3.jpg" alt="">
+
+<img src="assets/images/gallery4.jpg" alt="">
+
+</div>
+
+</section>
+
+<!-- ================= AI ================= -->
+
+<section class="planner">
+
+<h2>
+
+AI Trip Planner
+
+</h2>
+
+<p>
+
+Generate your perfect travel plan based on budget, duration and interests.
+
+</p>
+
+<button>
+
+Coming Soon
+
+</button>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-content">
+
+<h2>
+
+Incredible India Explorer
+
+</h2>
+
+<p>
+
+Discover India's beauty with live weather, hotels, maps and AI-powered travel planning.
+
+</p>
+
+<div class="social-icons">
+
+<i class="fab fa-github"></i>
+
+<i class="fab fa-linkedin"></i>
+
+<i class="fab fa-instagram"></i>
+
+</div>
+
+<p>
+
+© 2026 Jeevithpriyan V
+
+</p>
+
+</div>
+
 </footer>
 
-<script src="js/app.js"></script>
+<!-- ================= JAVASCRIPT ================= -->
 
-<script src="js/theme.js"></script>
+<script src="app.js"></script>
+
+<script src="theme.js"></script>
+
+<script src="weather.js"></script>
+
+<script src="gallery.js"></script>
+
+<script src="search.js"></script>
+
+<script src="hotels.js"></script>
+
+<script src="planner.js"></script>
+
+<script src="map.js"></script>
 
 </body>
 
