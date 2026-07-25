@@ -1943,3 +1943,52 @@ margin-bottom:20px;
 line-height:1.6;
 
 }
+/*==========================================================
+            SEARCH SUGGESTIONS
+==========================================================*/
+
+.suggestion-box{
+
+position:absolute;
+
+width:100%;
+
+background:white;
+
+border-radius:16px;
+
+margin-top:10px;
+
+overflow:hidden;
+
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+z-index:100;
+
+}
+
+.suggestion-item{
+
+padding:16px 20px;
+
+cursor:pointer;
+
+transition:.3s;
+
+border-bottom:1px solid #eee;
+
+}
+
+.suggestion-item:hover{
+
+background:#F3F4F6;
+
+padding-left:28px;
+
+}
+
+.suggestion-item:last-child{
+
+border-bottom:none;
+
+}
