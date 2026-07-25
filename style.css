@@ -1864,3 +1864,82 @@ var(--secondary)
 /*==========================================================
                     END
 ==========================================================*/
+/*==========================================================
+                FORECAST
+==========================================================*/
+
+.forecast-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(180px,1fr));
+
+gap:20px;
+
+margin-top:40px;
+
+}
+
+.forecast-card{
+
+background:white;
+
+padding:25px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+transition:.35s;
+
+}
+
+.forecast-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.forecast-icon{
+
+font-size:40px;
+
+margin:15px 0;
+
+}
+/*==========================================================
+            TRAVEL ADVICE
+==========================================================*/
+
+.travel-advice{
+
+margin-top:30px;
+
+padding:25px;
+
+background:#F8FAFC;
+
+border-radius:18px;
+
+text-align:center;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.travel-advice h3{
+
+margin-bottom:10px;
+
+}
+
+.travel-advice p{
+
+margin-bottom:20px;
+
+line-height:1.6;
+
+}
