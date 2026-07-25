@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "name": "Ooty",
+    "state": "Tamil Nadu",
+    "type": "Hill Station",
+    "latitude": 11.4064,
+    "longitude": 76.6932,
+    "rating": 4.8,
+    "bestSeason": "October - June",
+    "heroImage": "assets/images/ooty.jpg",
+    "gallery": [
+      "assets/images/ooty1.jpg",
+      "assets/images/ooty2.jpg",
+      "assets/images/ooty3.jpg"
+    ],
+    "description": "Queen of the Nilgiris with tea gardens and pleasant climate.",
+    "attractions": [
+      "Botanical Garden",
+      "Ooty Lake",
+      "Doddabetta Peak",
+      "Toy Train"
+    ],
+    "hotels": [
+      "Fortune Resort Sullivan Court",
+      "Sterling Ooty Fern Hill",
+      "Savoy Ooty"
+    ],
+    "food":[
+      "Homemade Chocolates",
+      "Tea",
+      "Varkey"
+    ]
+  },
+
+  {
+    "id":2,
+    "name":"Kodaikanal",
+    "state":"Tamil Nadu",
+    "type":"Hill Station",
+    "latitude":10.2381,
+    "longitude":77.4892,
+    "rating":4.8,
+    "bestSeason":"September - May",
+    "heroImage":"assets/images/kodaikanal.jpg",
+    "gallery":[
+      "assets/images/kodai1.jpg",
+      "assets/images/kodai2.jpg"
+    ],
+    "description":"Princess of Hill Stations.",
+    "attractions":[
+      "Kodai Lake",
+      "Coaker's Walk",
+      "Pillar Rocks"
+    ],
+    "hotels":[
+      "The Carlton",
+      "Sterling Kodai Lake",
+      "Kodai Resort"
+    ],
+    "food":[
+      "Homemade Chocolate",
+      "Cheese",
+      "Fresh Fruits"
+    ]
+  },
+
+  {
+    "id":3,
+    "name":"Goa",
+    "state":"Goa",
+    "type":"Beach",
+    "latitude":15.2993,
+    "longitude":74.1240,
+    "rating":4.9,
+    "bestSeason":"November - February",
+    "heroImage":"assets/images/goa.jpg",
+    "gallery":[
+      "assets/images/goa1.jpg",
+      "assets/images/goa2.jpg"
+    ],
+    "description":"India's most famous beach destination.",
+    "attractions":[
+      "Baga Beach",
+      "Calangute",
+      "Fort Aguada",
+      "Dudhsagar Falls"
+    ],
+    "hotels":[
+      "Taj Exotica",
+      "Grand Hyatt",
+      "The Leela Goa"
+    ],
+    "food":[
+      "Fish Curry",
+      "Bebinca",
+      "Prawn Balchão"
+    ]
+  }
+]
