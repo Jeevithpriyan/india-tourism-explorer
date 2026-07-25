@@ -1,1 +1,762 @@
+/*==========================================================
+        INCREDIBLE INDIA EXPLORER
+            RESPONSIVE DESIGN
+==========================================================*/
 
+/*==========================================================
+        LARGE LAPTOPS (1400px)
+==========================================================*/
+
+@media (max-width:1400px){
+
+.container{
+
+width:94%;
+
+}
+
+.hero-content h1{
+
+font-size:4.6rem;
+
+}
+
+.section-title{
+
+font-size:2.6rem;
+
+}
+
+.gallery-grid{
+
+grid-template-columns:
+repeat(3,1fr);
+
+}
+
+}
+
+/*==========================================================
+        LAPTOPS (1200px)
+==========================================================*/
+
+@media (max-width:1200px){
+
+.hero-content{
+
+max-width:800px;
+
+}
+
+.hero-content h1{
+
+font-size:4rem;
+
+}
+
+.search-container{
+
+max-width:750px;
+
+}
+
+.weather-details{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+.card-grid{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+.gallery-grid{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+.hero-stats{
+
+gap:35px;
+
+}
+
+}
+
+/*==========================================================
+        SMALL LAPTOPS (1024px)
+==========================================================*/
+
+@media (max-width:1024px){
+
+section{
+
+padding:80px 6%;
+
+}
+
+.hero-content h1{
+
+font-size:3.5rem;
+
+}
+
+.hero-content p{
+
+font-size:1.1rem;
+
+}
+
+.search-container{
+
+padding:10px;
+
+}
+
+.destination-card img{
+
+height:240px;
+
+}
+
+}
+/*==========================================================
+                TABLETS (992px)
+==========================================================*/
+
+@media (max-width:992px){
+
+header{
+
+padding:14px 0;
+
+}
+
+.navbar{
+
+padding:0 10px;
+
+}
+
+.menu{
+
+gap:20px;
+
+}
+
+.hero{
+
+height:90vh;
+
+}
+
+.hero-content h1{
+
+font-size:3rem;
+
+}
+
+.hero-content p{
+
+font-size:1rem;
+
+}
+
+.search-container{
+
+flex-direction:column;
+
+padding:18px;
+
+border-radius:25px;
+
+gap:15px;
+
+}
+
+.search-container input{
+
+width:100%;
+
+}
+
+.search-container button{
+
+width:100%;
+
+}
+
+.hero-stats{
+
+gap:25px;
+
+}
+
+#weatherCard{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.weather-left{
+
+justify-content:center;
+
+}
+
+.weather-details{
+
+grid-template-columns:1fr 1fr;
+
+width:100%;
+
+}
+
+.card-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
+
+}
+
+.gallery-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.social-icons{
+
+flex-wrap:wrap;
+
+}
+
+}
+
+/*==========================================================
+                SMALL TABLETS (768px)
+==========================================================*/
+
+@media (max-width:768px){
+
+.hero{
+
+height:auto;
+
+padding:140px 20px 80px;
+
+}
+
+.hero-content{
+
+max-width:100%;
+
+}
+
+.hero-content h1{
+
+font-size:2.6rem;
+
+}
+
+.hero-content p{
+
+font-size:1rem;
+
+margin-bottom:30px;
+
+}
+
+.section-title{
+
+font-size:2.2rem;
+
+}
+
+.section-subtitle{
+
+font-size:16px;
+
+}
+
+.hero-stats{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:20px;
+
+}
+
+.weather-details{
+
+grid-template-columns:1fr;
+
+}
+
+.card-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.gallery-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.destination-card img{
+
+height:260px;
+
+}
+
+.planner h2{
+
+font-size:2.3rem;
+
+}
+
+.planner p{
+
+font-size:16px;
+
+}
+
+footer{
+
+padding:50px 20px;
+
+}
+
+}
+/*==========================================================
+                MOBILE PHONES (576px)
+==========================================================*/
+
+@media (max-width:576px){
+
+section{
+
+padding:60px 18px;
+
+}
+
+/*========== NAVBAR ==========*/
+
+.navbar{
+
+padding:0 5px;
+
+}
+
+.logo h2{
+
+font-size:1.15rem;
+
+}
+
+.menu-toggle{
+
+display:block;
+
+font-size:30px;
+
+}
+
+.menu{
+
+position:fixed;
+
+top:75px;
+
+right:-100%;
+
+width:280px;
+
+height:calc(100vh - 75px);
+
+background:var(--surface);
+
+flex-direction:column;
+
+justify-content:flex-start;
+
+align-items:flex-start;
+
+padding:40px 25px;
+
+gap:25px;
+
+transition:.4s;
+
+box-shadow:var(--shadow-lg);
+
+}
+
+.menu.active{
+
+right:0;
+
+}
+
+.menu a{
+
+font-size:17px;
+
+}
+
+/*========== HERO ==========*/
+
+.hero{
+
+padding:120px 20px 70px;
+
+}
+
+.hero-content h1{
+
+font-size:2.2rem;
+
+line-height:1.2;
+
+}
+
+.hero-content p{
+
+font-size:15px;
+
+}
+
+.search-container{
+
+padding:15px;
+
+border-radius:22px;
+
+}
+
+.search-container input{
+
+padding:16px;
+
+font-size:15px;
+
+}
+
+.search-container button{
+
+padding:16px;
+
+font-size:15px;
+
+}
+
+.hero-stats{
+
+grid-template-columns:1fr;
+
+gap:18px;
+
+margin-top:40px;
+
+}
+
+/*========== WEATHER ==========*/
+
+#weatherCard{
+
+padding:25px;
+
+}
+
+.temperature{
+
+font-size:3rem;
+
+}
+
+.weather-left{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.weather-left img{
+
+width:70px;
+
+height:70px;
+
+}
+
+/*========== CARDS ==========*/
+
+.card-grid{
+
+grid-template-columns:1fr;
+
+gap:22px;
+
+}
+
+.destination-card img{
+
+height:230px;
+
+}
+
+.destination-card h3{
+
+font-size:1.4rem;
+
+}
+
+/*========== GALLERY ==========*/
+
+.gallery-grid{
+
+grid-template-columns:1fr;
+
+gap:18px;
+
+}
+
+.gallery-grid img{
+
+height:220px;
+
+}
+
+/*========== FOOTER ==========*/
+
+.social-icons{
+
+gap:14px;
+
+}
+
+.social-icons i{
+
+width:48px;
+
+height:48px;
+
+font-size:18px;
+
+}
+
+}
+/*==========================================================
+            EXTRA SMALL DEVICES (400px)
+==========================================================*/
+
+@media (max-width:400px){
+
+html{
+
+font-size:14px;
+
+}
+
+.hero-content h1{
+
+font-size:1.8rem;
+
+}
+
+.hero-content p{
+
+font-size:.9rem;
+
+}
+
+.search-container{
+
+padding:12px;
+
+}
+
+.search-container input{
+
+padding:14px;
+
+font-size:14px;
+
+}
+
+.search-container button{
+
+padding:14px;
+
+font-size:14px;
+
+}
+
+.destination-card img{
+
+height:200px;
+
+}
+
+.destination-card h3{
+
+font-size:1.2rem;
+
+}
+
+.temperature{
+
+font-size:2.5rem;
+
+}
+
+.weather-details{
+
+font-size:13px;
+
+}
+
+.social-icons{
+
+gap:10px;
+
+}
+
+.social-icons i{
+
+width:42px;
+
+height:42px;
+
+font-size:16px;
+
+}
+
+}
+
+/*==========================================================
+            ULTRA WIDE SCREENS
+==========================================================*/
+
+@media (min-width:1600px){
+
+.container{
+
+max-width:1500px;
+
+}
+
+.hero-content{
+
+max-width:1000px;
+
+}
+
+.hero-content h1{
+
+font-size:6rem;
+
+}
+
+.section-title{
+
+font-size:3.5rem;
+
+}
+
+.card-grid{
+
+grid-template-columns:repeat(4,1fr);
+
+}
+
+.gallery-grid{
+
+grid-template-columns:repeat(4,1fr);
+
+}
+
+}
+
+/*==========================================================
+            TOUCH DEVICES
+==========================================================*/
+
+@media (hover:none){
+
+.btn:hover,
+
+.destination-card:hover,
+
+.gallery-grid img:hover{
+
+transform:none;
+
+}
+
+}
+
+/*==========================================================
+            PRINT
+==========================================================*/
+
+@media print{
+
+header,
+
+footer,
+
+button,
+
+.menu-toggle{
+
+display:none;
+
+}
+
+body{
+
+background:white;
+
+color:black;
+
+}
+
+section{
+
+padding:20px;
+
+}
+
+}
+
+/*==========================================================
+            ACCESSIBILITY
+==========================================================*/
+
+:focus-visible{
+
+outline:3px solid #2563EB;
+
+outline-offset:4px;
+
+border-radius:8px;
+
+}
+
+/*==========================================================
+                END OF FILE
+==========================================================*/
