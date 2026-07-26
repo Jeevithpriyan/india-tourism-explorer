@@ -2026,3 +2026,20 @@ transform:scale(1.08);
 
 }
 
+/*==========================================================
+            KEYBOARD SELECTION
+==========================================================*/
+
+.suggestion-item.selected{
+
+background:#2563EB;
+
+color:white;
+
+}
+
+.suggestion-item.selected small{
+
+color:#E5E7EB;
+
+}
