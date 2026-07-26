@@ -1992,3 +1992,37 @@ padding-left:28px;
 border-bottom:none;
 
 }
+/*==========================================================
+                VOICE BUTTON
+==========================================================*/
+
+.voice-btn{
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:#2563EB;
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+transition:.3s;
+
+margin-left:12px;
+
+}
+
+.voice-btn:hover{
+
+transform:scale(1.08);
+
+}
+
