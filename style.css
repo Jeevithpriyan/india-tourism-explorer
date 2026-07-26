@@ -2086,3 +2086,99 @@ transform:translateY(-3px);
 box-shadow:0 10px 20px rgba(37,99,235,.25);
 
 }
+/*==========================================================
+                SEARCH RESULT CARDS
+==========================================================*/
+
+.result-card{
+
+display:flex;
+
+gap:20px;
+
+background:white;
+
+border-radius:18px;
+
+overflow:hidden;
+
+margin:20px 0;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+.result-card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.result-card img{
+
+width:240px;
+
+height:180px;
+
+object-fit:cover;
+
+}
+
+.result-content{
+
+padding:20px;
+
+flex:1;
+
+}
+
+.result-content h2{
+
+margin-bottom:8px;
+
+}
+
+.result-content button{
+
+margin-top:15px;
+
+padding:12px 24px;
+
+border:none;
+
+background:#2563EB;
+
+color:white;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+.no-results{
+
+text-align:center;
+
+padding:60px;
+
+}
+/*==========================================================
+                RECOMMENDATIONS
+==========================================================*/
+
+.recommendation-title{
+
+font-size:2rem;
+
+font-weight:700;
+
+margin:40px 0 20px;
+
+text-align:center;
+
+color:#2563EB;
+
+}
