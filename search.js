@@ -332,6 +332,10 @@ function advancedSearch(query){
 
     displaySuggestions(filteredDestinations);
 
+        displaySearchResults(filteredDestinations);
+
+rankResults(query);
+
 }
 /*==========================================================
                 FAVORITE DESTINATIONS
@@ -822,3 +826,317 @@ function loadRecentHistory(){
     );
 
 }
+/*==========================================================
+                RECENTLY VIEWED
+==========================================================*/
+
+function addRecentlyViewed(place){
+
+    let viewed = JSON.parse(
+
+        localStorage.getItem("recentViewed")
+
+    ) || [];
+
+    viewed = viewed.filter(item => item !== place);
+
+    viewed.unshift(place);
+
+    viewed = viewed.slice(0,8);
+
+    localStorage.setItem(
+
+        "recentViewed",
+
+        JSON.stringify(viewed)
+
+    );
+
+}
+
+/*==========================================================
+                DISPLAY SEARCH RESULTS
+==========================================================*/
+
+function displaySearchResults(results){
+
+    if(!resultsContainer) return;
+
+    resultsContainer.innerHTML = "";
+
+    if(results.length === 0){
+
+        resultsContainer.innerHTML = `
+
+<div class="no-results">
+
+<h2>No destinations found 😔</h2>
+
+<p>Try another destination or state.</p>
+
+</div>
+
+`;
+
+        return;
+
+    }
+
+    results.forEach(place=>{
+
+        resultsContainer.innerHTML += `
+
+<div class="result-card">
+
+<img src="${place.heroImage}"
+
+alt="${place.name}"
+
+loading="lazy">
+
+<div class="result-content">
+
+<h2>${place.name}</h2>
+
+<p>${place.state}</p>
+
+<p>${place.type}</p>
+
+<div class="rating">
+
+⭐ ${place.rating}
+
+</div>
+
+<button
+
+onclick="openDestination('${place.name}')">
+
+Explore
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+    });
+
+}
+
+/*==========================================================
+                OPEN DESTINATION
+==========================================================*/
+
+function openDestination(name){
+
+    addRecentlyViewed(name);
+
+    window.location.href =
+
+    `destination.html?place=${
+
+        encodeURIComponent(name)
+
+    }`;
+
+}
+
+/*==========================================================
+                EXPLORE NEARBY
+==========================================================*/
+
+function exploreNearby(){
+
+    if(!navigator.geolocation){
+
+        alert("Geolocation not supported.");
+
+        return;
+
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        position=>{
+
+            findNearbyPlaces(
+
+                position.coords.latitude,
+
+                position.coords.longitude,
+
+                150
+
+            );
+
+        },
+
+        ()=>{
+
+            alert("Location permission denied.");
+
+        }
+
+    );
+
+}
+
+/*==========================================================
+                REFRESH RESULTS
+==========================================================*/
+
+function refreshSearchResults(){
+
+    displaySearchResults(
+
+        filteredDestinations
+
+    );
+
+}
+/*==========================================================
+                SMART RECOMMENDATIONS
+==========================================================*/
+
+function getRecommendedDestinations(){
+
+    const recent = getRecentSearches();
+
+    if(recent.length === 0){
+
+        return destinations
+            .sort((a,b)=>b.rating-a.rating)
+            .slice(0,6);
+
+    }
+
+    const last = recent[0];
+
+    const current = destinations.find(
+
+        d => d.name === last
+
+    );
+
+    if(!current){
+
+        return destinations.slice(0,6);
+
+    }
+
+    return destinations.filter(place=>
+
+        place.type === current.type &&
+
+        place.name !== current.name
+
+    ).slice(0,6);
+
+}
+
+/*==========================================================
+            SHOW RECOMMENDATIONS
+==========================================================*/
+
+function showRecommendations(){
+
+    const recommendations =
+
+    getRecommendedDestinations();
+
+    displaySearchResults(
+
+        recommendations
+
+    );
+
+}
+
+/*==========================================================
+                SEARCH CACHE
+==========================================================*/
+
+const searchCache = new Map();
+
+function cachedSearch(query){
+
+    query = query.toLowerCase();
+
+    if(searchCache.has(query)){
+
+        filteredDestinations =
+
+        searchCache.get(query);
+
+    }
+
+    else{
+
+        advancedSearch(query);
+
+        searchCache.set(
+
+            query,
+
+            filteredDestinations
+
+        );
+
+    }
+
+    displaySearchResults(
+
+        filteredDestinations
+
+    );
+
+}
+
+/*==========================================================
+            CLEAR SEARCH
+==========================================================*/
+
+function clearSearch(){
+
+    if(searchBox){
+
+        searchBox.value="";
+
+    }
+
+    suggestionBox.innerHTML="";
+
+    filteredDestinations = destinations;
+
+    displaySearchResults(
+
+        filteredDestinations
+
+    );
+
+}
+
+/*==========================================================
+            INITIAL DISPLAY
+==========================================================*/
+
+window.addEventListener(
+
+"DOMContentLoaded",
+
+()=>{
+
+setTimeout(()=>{
+
+showRecommendations();
+
+},300);
+
+});
+
+/*==========================================================
+                END OF search.js
+==========================================================*/
