@@ -2043,3 +2043,46 @@ color:white;
 color:#E5E7EB;
 
 }
+/*==========================================================
+                SEARCH ACTIONS
+==========================================================*/
+
+.search-actions{
+
+display:flex;
+
+gap:15px;
+
+margin-top:18px;
+
+flex-wrap:wrap;
+
+}
+
+.search-actions button{
+
+padding:14px 24px;
+
+border:none;
+
+border-radius:12px;
+
+background:#2563EB;
+
+color:white;
+
+cursor:pointer;
+
+font-size:15px;
+
+transition:.3s;
+
+}
+
+.search-actions button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 10px 20px rgba(37,99,235,.25);
+
+}
