@@ -188,3 +188,144 @@ function selectDestination(city){
 
 }
 
+/*==========================================================
+                VOICE SEARCH
+==========================================================*/
+
+const SpeechRecognition =
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
+
+if(SpeechRecognition){
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-IN";
+
+    recognition.continuous = false;
+
+    recognition.interimResults = false;
+
+    const voiceButton =
+    document.getElementById("voiceSearch");
+
+    if(voiceButton){
+
+        voiceButton.addEventListener("click",()=>{
+
+            recognition.start();
+
+        });
+
+    }
+
+    recognition.onresult=(event)=>{
+
+        const text =
+        event.results[0][0].transcript;
+
+        searchBox.value=text;
+
+        searchDestinations(text);
+
+    };
+
+}
+
+/*==========================================================
+                RECENT SEARCHES
+==========================================================*/
+
+function saveSearch(city){
+
+    let history = JSON.parse(
+
+        localStorage.getItem("recentSearches")
+
+    ) || [];
+
+    history = history.filter(
+
+        item => item !== city
+
+    );
+
+    history.unshift(city);
+
+    history = history.slice(0,10);
+
+    localStorage.setItem(
+
+        "recentSearches",
+
+        JSON.stringify(history)
+
+    );
+
+}
+
+function getRecentSearches(){
+
+    return JSON.parse(
+
+        localStorage.getItem("recentSearches")
+
+    ) || [];
+
+}
+
+/*==========================================================
+                FUZZY SEARCH
+==========================================================*/
+
+function fuzzyMatch(query,text){
+
+    query=query.toLowerCase();
+
+    text=text.toLowerCase();
+
+    let i=0;
+
+    for(let char of text){
+
+        if(char===query[i]){
+
+            i++;
+
+        }
+
+    }
+
+    return i===query.length;
+
+}
+
+/*==========================================================
+                IMPROVED SEARCH
+==========================================================*/
+
+function advancedSearch(query){
+
+    query=query.trim().toLowerCase();
+
+    filteredDestinations=
+
+    destinations.filter(place=>{
+
+        return(
+
+            place.name.toLowerCase().includes(query)||
+
+            place.state.toLowerCase().includes(query)||
+
+            place.type.toLowerCase().includes(query)||
+
+            fuzzyMatch(query,place.name)
+
+        );
+
+    });
+
+    displaySuggestions(filteredDestinations);
+
+}
