@@ -181,7 +181,11 @@ function selectDestination(city){
     suggestionBox.innerHTML="";
 
     if(typeof fetchWeather==="function"){
+            
+        increaseSearchCount(city);
 
+        saveSearch(city);
+            
         fetchWeather(city);
 
     }
@@ -662,5 +666,159 @@ return distance<=radius;
 });
 
 displaySuggestions(nearby);
+
+}
+/*==========================================================
+                DEBOUNCE SEARCH
+==========================================================*/
+
+let searchTimer;
+
+function debounceSearch(query){
+
+    clearTimeout(searchTimer);
+
+    searchTimer = setTimeout(()=>{
+
+        advancedSearch(query);
+
+    },300);
+
+}
+
+/*==========================================================
+                UPDATE INPUT LISTENER
+==========================================================*/
+
+if(searchBox){
+
+    searchBox.removeEventListener("input",()=>{});
+
+    searchBox.addEventListener("input",(event)=>{
+
+        debounceSearch(event.target.value);
+
+    });
+
+}
+
+/*==========================================================
+                SEARCH SCORE
+==========================================================*/
+
+function calculateSearchScore(place,query){
+
+    query = query.toLowerCase();
+
+    let score = 0;
+
+    if(place.name.toLowerCase()===query)
+        score +=100;
+
+    if(place.name.toLowerCase().startsWith(query))
+        score +=60;
+
+    if(place.name.toLowerCase().includes(query))
+        score +=40;
+
+    if(place.state.toLowerCase().includes(query))
+        score +=20;
+
+    if(place.type.toLowerCase().includes(query))
+        score +=15;
+
+    score += place.rating * 5;
+
+    return score;
+
+}
+
+/*==========================================================
+                SORT SEARCH RESULTS
+==========================================================*/
+
+function rankResults(query){
+
+    filteredDestinations.sort((a,b)=>{
+
+        return calculateSearchScore(b,query)
+
+        -
+
+        calculateSearchScore(a,query);
+
+    });
+
+}
+
+/*==========================================================
+                SEARCH ANALYTICS
+==========================================================*/
+
+function increaseSearchCount(city){
+
+    let analytics = JSON.parse(
+
+        localStorage.getItem("searchAnalytics")
+
+    ) || {};
+
+    analytics[city] =
+
+    (analytics[city] || 0) + 1;
+
+    localStorage.setItem(
+
+        "searchAnalytics",
+
+        JSON.stringify(analytics)
+
+    );
+
+}
+
+/*==========================================================
+                TOP SEARCHES
+==========================================================*/
+
+function getTopSearches(){
+
+    const analytics = JSON.parse(
+
+        localStorage.getItem("searchAnalytics")
+
+    ) || {};
+
+    return Object.entries(analytics)
+
+    .sort((a,b)=>b[1]-a[1])
+
+    .slice(0,5)
+
+    .map(item=>item[0]);
+
+}
+
+/*==========================================================
+                SEARCH HISTORY PANEL
+==========================================================*/
+
+function loadRecentHistory(){
+
+    const history =
+
+    getRecentSearches();
+
+    if(history.length===0)
+
+    return;
+
+    console.log(
+
+        "Recent Searches:",
+
+        history
+
+    );
 
 }
