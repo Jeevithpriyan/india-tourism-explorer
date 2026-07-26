@@ -329,3 +329,338 @@ function advancedSearch(query){
     displaySuggestions(filteredDestinations);
 
 }
+/*==========================================================
+                FAVORITE DESTINATIONS
+==========================================================*/
+
+let favoritePlaces = JSON.parse(
+
+localStorage.getItem("favoritePlaces")
+
+) || [];
+
+function addFavoritePlace(place){
+
+    if(!favoritePlaces.includes(place)){
+
+        favoritePlaces.push(place);
+
+        localStorage.setItem(
+
+            "favoritePlaces",
+
+            JSON.stringify(favoritePlaces)
+
+        );
+
+    }
+
+}
+
+function removeFavoritePlace(place){
+
+    favoritePlaces =
+
+    favoritePlaces.filter(item=>item!==place);
+
+    localStorage.setItem(
+
+        "favoritePlaces",
+
+        JSON.stringify(favoritePlaces)
+
+    );
+
+}
+
+/*==========================================================
+                TRENDING DESTINATIONS
+==========================================================*/
+
+const trendingPlaces=[
+
+"Goa",
+"Ooty",
+"Manali",
+"Jaipur",
+"Leh",
+"Udaipur",
+"Kodaikanal",
+"Munnar",
+"Darjeeling",
+"Andaman"
+
+];
+
+/*==========================================================
+            KEYBOARD NAVIGATION
+==========================================================*/
+
+let currentIndex=-1;
+
+if(searchBox){
+
+searchBox.addEventListener("keydown",(e)=>{
+
+const items=
+
+document.querySelectorAll(".suggestion-item");
+
+if(!items.length) return;
+
+if(e.key==="ArrowDown"){
+
+e.preventDefault();
+
+currentIndex++;
+
+if(currentIndex>=items.length)
+
+currentIndex=0;
+
+updateSelection(items);
+
+}
+
+else if(e.key==="ArrowUp"){
+
+e.preventDefault();
+
+currentIndex--;
+
+if(currentIndex<0)
+
+currentIndex=items.length-1;
+
+updateSelection(items);
+
+}
+
+else if(e.key==="Enter"){
+
+if(currentIndex>=0){
+
+items[currentIndex].click();
+
+}
+
+}
+
+});
+
+}
+
+/*==========================================================
+            UPDATE SELECTION
+==========================================================*/
+
+function updateSelection(items){
+
+items.forEach(item=>
+
+item.classList.remove("selected")
+
+);
+
+items[currentIndex]
+
+.classList.add("selected");
+
+items[currentIndex]
+
+.scrollIntoView({
+
+block:"nearest"
+
+});
+
+}
+
+/*==========================================================
+            POPULAR SEARCHES
+==========================================================*/
+
+function showTrending(){
+
+displaySuggestions(
+
+trendingPlaces.map(name=>{
+
+return{
+
+name:name,
+
+state:"Popular",
+
+type:"Trending"
+
+};
+
+})
+
+);
+
+}
+/*==========================================================
+                FILTER BY STATE
+==========================================================*/
+
+function filterByState(state){
+
+    filteredDestinations = destinations.filter(place =>
+
+        place.state.toLowerCase() === state.toLowerCase()
+
+    );
+
+    displaySuggestions(filteredDestinations);
+
+}
+
+/*==========================================================
+                FILTER BY CATEGORY
+==========================================================*/
+
+function filterByCategory(category){
+
+    filteredDestinations = destinations.filter(place =>
+
+        place.type.toLowerCase() === category.toLowerCase()
+
+    );
+
+    displaySuggestions(filteredDestinations);
+
+}
+
+/*==========================================================
+                SORT BY RATING
+==========================================================*/
+
+function sortByRating(){
+
+    filteredDestinations.sort(
+
+        (a,b)=>b.rating-a.rating
+
+    );
+
+    displaySuggestions(filteredDestinations);
+
+}
+
+/*==========================================================
+            RANDOM DESTINATION
+==========================================================*/
+
+function randomDestination(){
+
+    const random = destinations[
+
+        Math.floor(
+
+            Math.random() * destinations.length
+
+        )
+
+    ];
+
+    if(searchBox){
+
+        searchBox.value = random.name;
+
+    }
+
+    selectDestination(random.name);
+
+}
+
+/*==========================================================
+            DISTANCE CALCULATION
+==========================================================*/
+
+function calculateDistance(
+
+lat1,
+
+lon1,
+
+lat2,
+
+lon2
+
+){
+
+const R = 6371;
+
+const dLat =
+
+(lat2-lat1)*Math.PI/180;
+
+const dLon =
+
+(lon2-lon1)*Math.PI/180;
+
+const a =
+
+Math.sin(dLat/2)**2+
+
+Math.cos(lat1*Math.PI/180)*
+
+Math.cos(lat2*Math.PI/180)*
+
+Math.sin(dLon/2)**2;
+
+const c =
+
+2*Math.atan2(
+
+Math.sqrt(a),
+
+Math.sqrt(1-a)
+
+);
+
+return R*c;
+
+}
+
+/*==========================================================
+            FIND NEARBY PLACES
+==========================================================*/
+
+function findNearbyPlaces(
+
+latitude,
+
+longitude,
+
+radius=100
+
+){
+
+const nearby =
+
+destinations.filter(place=>{
+
+const distance =
+
+calculateDistance(
+
+latitude,
+
+longitude,
+
+place.latitude,
+
+place.longitude
+
+);
+
+return distance<=radius;
+
+});
+
+displaySuggestions(nearby);
+
+}
